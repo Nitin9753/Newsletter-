@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const request = require("request");
 const bodyParser = require("body-parser");
@@ -6,8 +7,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
-const api_key = "6b47301de546b9f9fa1815b57375ea5c-us14";
-const list_id = "243a521cf5";
+const api_key = process.env.RANDOMER_API_KEY;
+const list_id = process.env.RANDOMER_LIST_ID;
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/signup.html");
 })
